@@ -1,0 +1,23 @@
+.product-card {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+
+}
+
+.product-img {
+  height: 19rem;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1.5rem 9999px 9999px 1.5rem; /* تقريب الـ full */
+  transition: border-radius .3s ease-in-out, transform 1s ease-in;
+}
+
+.product-img:hover {
+  border-radius: 2rem; /* أقرب ل 2xl بس الفرق أصغر */
+  transform: scale(1.05); /* يخلي الحركة تبان سلسة */
+}

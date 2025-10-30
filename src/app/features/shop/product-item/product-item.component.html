@@ -1,0 +1,21 @@
+@if (product) {
+  <!-- <mat-card appearance="raised" routerLink="/shop/{{product.id}}" class="product-card bg-gray-900 text-gray-300  p-1 rounded-l-none rounded-4xl"> -->
+  <mat-card appearance="raised" routerLink="/shop/{{product.id}}" class="product-card bg-gray-900 text-gray-300  p-1  rounded-b-4xl">
+    <img [src]="product.pictureUrl" alt="no" class=" h-79 w-full object-cover rounded-b-4xl " >
+    <!-- <img [src]="product.pictureUrl" alt="no" class=" product-img  " > -->
+    <mat-card-title class="pl-3 p-2 line-clamp-1" >{{ product.name }}</mat-card-title>
+    <mat-card-subtitle class="text-green-500 pl-4 text-2xl">{{ product.price | currency }}</mat-card-subtitle>
+    <mat-card-content class="pl-4" >
+      <p class="overflow-hidden text-ellipsis line-clamp-2">
+        {{ product.description }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions (click)="$event.stopPropagation()">
+      <button mat-button color="accent" (click)="cartService.addItemToCart(product)">
+        <mat-icon>shopping_cart</mat-icon>
+        Add to Cart
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+}

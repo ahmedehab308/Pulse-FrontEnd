@@ -1,0 +1,87 @@
+<!-- header.component.html -->
+
+ <header class="flex items-center justify-between px-6 py-4 text-gray-200  fixed top-0 z-50 w-full  bg-gray-900 gradient-bg">
+    <!-- Logo -->
+    <div class="text-left " routerLink="/">
+      <!-- <h1 class="text-xl font-extrabold" style="color: #ffd740;" >Pulse</h1> -->
+      <img src="images\logo.png" alt="ghg" class="cursor-pointer " >
+      <p class="text-sm   pl-2 " style="color: #f5b850;" >Your Wrist, Your World</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex space-x-6">
+      <a routerLink="/" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}" class="hover:text-teal-400 transition cursor-pointer">
+        <!-- <mat-icon class="text-2xl">home</mat-icon> -->
+        Home
+      </a>
+      <a routerLink="/shop" routerLinkActive="active" class="hover:text-teal-400 transition cursor-pointer">
+        <!-- <mat-icon class="text-2xl">storefront</mat-icon> -->
+        Explore
+      </a>
+      <a routerLink="/about-us" routerLinkActive="active" class="hover:text-teal-400 transition cursor-pointer">About Us</a>
+    </nav>
+
+  <!-- Actions -->
+  <div class="flex items-center space-x-5">
+    <!-- Shopping Cart Icon -->
+    <div class="relative">
+      <a mat-icon-button routerLink="/cart" routerLinkActive="active"  >
+        <mat-icon>shopping_cart</mat-icon>
+      </a>
+      <span class="absolute -top-1 -right-1 text-xs  text-gray-200 font-bold rounded-full px-1.5 py-0.5" style="background-color: #fba007;" >
+        {{ cartService.itemCount()}}
+      </span>
+    </div>
+
+    <div class="">
+      <span>{{accountService.currentUser()?.firstName}}</span>
+      <button mat-button [matMenuTriggerFor]="menu" class="text-gray-200  ">
+        <mat-icon class="w-fit text-3xl">person</mat-icon>
+        <mat-icon >arrow_drop_down</mat-icon>
+      </button>
+    </div>
+
+
+
+
+  </div>
+</header>
+@if(BusyService.loading){
+  <mat-progress-bar mode="indeterminate" class="fixed top-20 z-50 " color="primary"></mat-progress-bar>
+}
+
+
+
+
+
+
+<mat-menu #menu="matMenu" class="px-5 text-gray-400">
+  @if (accountService.currentUser()) {
+  <button *appIsAdmin mat-menu-item routerLink="/admin" routerLinkActive="activeAct" class="flex justify-between hover:cursor-pointer hover:text-gray-800 m-1" >
+    <mat-icon class="mx-1">person</mat-icon>
+    Admin
+  </button>
+  <mat-divider *appIsAdmin ></mat-divider>
+  <button mat-menu-item routerLink="/cart" routerLinkActive="activeAct" class="flex justify-between hover:cursor-pointer hover:text-gray-800 m-1" >
+    <mat-icon class="mx-1">shopping_cart</mat-icon>
+    My cart
+  </button>
+   <mat-divider></mat-divider>
+  <button mat-menu-item routerLink="/orders" routerLinkActive="activeAct" class="flex justify-between hover:cursor-pointer hover:text-gray-800 m-1">
+    <mat-icon class="mx-1">history</mat-icon>
+    View Orders
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="logout()" class="flex justify-between hover:cursor-pointer hover:text-gray-800 m-1">
+    <mat-icon class="mx-1">logout</mat-icon>
+    Logout</button>
+  }@else{
+    <button mat-menu-item routerLink="account/login" routerLinkActive="activeAct" class="flex justify-between hover:cursor-pointer hover:text-gray-800 m-1" >
+      Login
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="account/register" routerLinkActive="activeAct" class="flex justify-between hover:cursor-pointer hover:text-gray-800 m-1" >
+      Register
+    </button>
+  }
+</mat-menu>

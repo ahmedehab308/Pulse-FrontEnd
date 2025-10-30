@@ -1,0 +1,55 @@
+<mat-card class="max-w-lg mx-auto mt-20 p-10 rounded-3xl shadow-2xl bg-white">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- Header Section -->
+        <div class="text-center mb-8">
+            
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Create Account</h1>
+            <p class="text-gray-500 text-sm">Join us to explore premium smartwatches</p>
+        </div>
+
+        <!-- Form Fields -->
+        <div class="space-y-4">
+            <app-text-input label="First name" formControlName="firstName" />
+            <app-text-input label="Last name" formControlName="lastName" />
+            <app-text-input label="Email address" formControlName="email" />
+            <app-text-input label="Password" formControlName="password" type="password" />
+        </div>
+
+        <!-- Validation Errors -->
+        @if (validationErrors.length > 0) {
+            <div class="mt-4 mb-4 p-4 bg-red-50 border border-red-200 rounded-xl">
+                <div class="flex items-start">
+                    <svg class="w-5 h-5 text-red-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                    </svg>
+                    <div class="flex-1">
+                        <h3 class="text-sm font-semibold text-red-800 mb-2">Please fix the following errors:</h3>
+                        <ul class="space-y-1">
+                            @for (error of validationErrors; track error) {
+                                <li class="text-sm text-red-700">• {{error}}</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+        <!-- Submit Button -->
+        <button [disabled]="registerForm.invalid" mat-raised-button type="submit"
+            class="w-full py-3 text-base font-semibold rounded-2xl bg-gray-800 text-white hover:bg-gray-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+            Create Account
+        </button>
+
+
+
+        <!-- Sign In Link -->
+        <div class="text-center mt-6">
+            <p class="text-sm text-gray-600">
+                Already have an account?
+                <a href="#" class="text-gray-800 font-semibold hover:text-gray-600">Sign in</a>
+            </p>
+        </div>
+    </form>
+</mat-card>

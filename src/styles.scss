@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+
+/* FormField Overrides */
+:root {
+  @include mat.form-field-overrides((
+    outlined-outline-color: gray,
+    outlined-focus-outline-color: #f49e07,
+    outlined-hover-outline-color: #f49e07,
+    outlined-error-outline-color: red,
+    outlined-disabled-outline-color: gray
+  ));
+
+  @include mat.paginator-overrides((
+    container-text-color: #faa70e,
+    container-background-color: transparent,
+    disabled-icon-color: gray,
+    enabled-icon-color: #faa70e,
+  ));
+}
+
+/* Snack Bar Overrides */
+.snack-error {
+  @include mat.snack-bar-overrides((
+    button-color: white,
+    container-color: red,
+  ));
+}
+
+.snack-success {
+  @include mat.snack-bar-overrides((
+    button-color: white,
+    container-color: green,
+    supporting-text-color: white
+  ));
+}
+
+/* Custom styles */
+button.match-input-height {
+  height: var(--mat-form-field-container-height) !important;
+}
+
+.mdc-notched-outline__notch {
+  border-right-style: none !important;
+}
+
+body {
+  background-color: #363d4a;
+  color: cyan;
+}

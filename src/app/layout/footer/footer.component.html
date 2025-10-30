@@ -1,0 +1,73 @@
+<!-- footer.component.html -->
+
+<footer class=" text-gray-200 py-8 mt-10 gradient-bg">
+  <div class="container mx-auto px-6">
+    <!-- Footer Content -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+
+      <!-- Brand Section -->
+      <div class="text-left">
+        <h2 class="text-xl font-extrabold mb-2" style="color: #ffd740;">Pulse</h2>
+        <p class="text-sm" style="color: #f5b850;">Your Wrist, Your World</p>
+        <p class="text-gray-400 text-sm mt-3">
+          Experience the future of smartwatches with cutting-edge technology and elegant design.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-semibold mb-3" style="color: #ffd740;">Quick Links</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a routerLink="/" class="text-gray-400 hover:text-teal-400 transition cursor-pointer">
+              Home
+            </a>
+          </li>
+          <li>
+            <a routerLink="/shop" class="text-gray-400 hover:text-teal-400 transition cursor-pointer">
+              Explore
+            </a>
+          </li>
+          <li>
+            <a routerLink="/about-us" class="text-gray-400 hover:text-teal-400 transition cursor-pointer">
+              About Us
+            </a>
+          </li>
+          <li>
+            <a routerLink="/cart" class="text-gray-400 hover:text-teal-400 transition cursor-pointer">
+              Shopping Cart
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact & Social -->
+      <div>
+        <h3 class="text-lg font-semibold mb-3" style="color: #ffd740;">Connect With Us</h3>
+        <div class="flex space-x-4 mb-4">
+          <a href="#" class="text-gray-400 hover:text-teal-400 transition">
+            <mat-icon>facebook</mat-icon>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-teal-400 transition">
+            <mat-icon>email</mat-icon>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-teal-400 transition">
+            <mat-icon>phone</mat-icon>
+          </a>
+        </div>
+        <p class="text-gray-400 text-sm">
+          Email: info@pulse.com<br>
+          Phone: +20 123 456 7890
+        </p>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <mat-divider class="bg-gray-700 mb-4"></mat-divider>
+
+    <!-- Copyright -->
+    <div class="text-center text-gray-400 text-sm">
+      <p>&copy; {{ currentYear }} Pulse. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

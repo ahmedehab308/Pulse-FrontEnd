@@ -1,0 +1,97 @@
+@if(products){
+  <div class="flex flex-col gap-3 " >
+
+    <div class="flex justify-between gap-3">
+      <form
+      #searchForm="ngForm"
+      (ngSubmit)="onSearchChange($event)"
+      class="relative flex items-center w-full max-w-1/2 mx-auto">
+      <input
+        type="search"
+        class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+        placeholder="Search..."
+        name="search"
+        [(ngModel)]="shopParams.search"
+      />
+      <button mat-icon-button type="submit" class="absolute  right-5  flex items-center pl-3 ">
+        <mat-icon color="primary">search</mat-icon>
+      </button>
+
+      </form>
+
+
+
+    </div>
+
+    <div class="flex justify-between gap-3">
+
+
+      <div class="flex gap-3 " >
+        <button mat-button [matMenuTriggerFor]="sortMenu" class=" text-gray-200">
+          <mat-icon>swap_vert</mat-icon>
+          Sort
+        </button>
+        <button mat-button (click)="openFiltersDialog()" class=" text-gray-200">
+        <mat-icon>filter_list</mat-icon>
+        Filters
+        </button>
+
+
+      </div>
+
+    </div>
+
+
+
+    <div class="grid grid-cols-5 gap-4 justify-items-center  ">
+      @if(products.data.length === 0){
+        <div class="col-span-4 text-center  text-gray-200 min-h-96">
+          No products found.
+        </div>
+      }
+      @for (product of products.data; track $index) {
+        <app-product-item [product]="product"></app-product-item>
+
+      }
+    </div>
+
+    <div class="flex justify-center ">
+      <mat-paginator
+      class="  rounded m-10"
+
+
+      [length]="products.count" [pageSize]="shopParams.pageSize" [pageIndex]="shopParams.pageIndex-1"
+      [hidePageSize]="true"  [pageSizeOptions]="pageSizeOptions" aria-label="Select page"
+      (page)="handlePageEvent($event)">
+      </mat-paginator>
+    </div>
+
+
+  </div>
+
+  <mat-menu #sortMenu="matMenu" >
+    <mat-selection-list [multiple]="false" (selectionChange)="onSortChange($event)" >
+      @for(sort of sortOptions ; track sort.value) {
+        <mat-list-option   [value]="sort.value" [selected]="sort.value === shopParams.sort">
+          {{ sort.name }}
+        </mat-list-option>
+
+      }
+
+    </mat-selection-list>
+
+  </mat-menu>
+}
+@else{
+  <div class="flex justify-center items-center h-[70vh]">
+    <mat-progress-spinner
+      mode="indeterminate"
+      >
+    </mat-progress-spinner>
+  </div>
+}
+
+
+
+
+

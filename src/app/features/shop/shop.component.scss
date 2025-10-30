@@ -1,0 +1,19 @@
+/* اللون الافتراضي للنص */
+::ng-deep .mat-list-option .mat-list-text {
+  color: white; /* ممكن تغير لأي لون تحبه */
+}
+
+/* لون النص للـ option المحدد */
+::ng-deep .mat-list-option.mat-selected .mat-list-text {
+  color: #FFC107; /* ذهبي، أو أي لون تاني */
+}
+
+/* لو عايز تغير خلفية الـ option لما يكون محدد */
+::ng-deep .mat-list-option.mat-selected {
+  background-color: #00ACC1; /* سيان غامق */
+}
+
+/* لو عايز تغير خلفية كل الـ options */
+::ng-deep .mat-list-option {
+  background-color: #006064; /* سيان متوسط أو أي لون */
+}

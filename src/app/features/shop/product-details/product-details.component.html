@@ -1,0 +1,63 @@
+@if (product) {
+    <section class=" ">
+        <div class="max-w-screen-2xl px-4 mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Image Section -->
+                <div class="max-w-xl mx-auto">
+                    <img
+                        class="w-full object-cover rounded-4xl"
+                        src="{{product.pictureUrl}}"
+                        alt="{{product.name}} picture">
+                </div>
+
+                <!-- Product Info Section -->
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-semibold text-gray-200">{{product.name}}</h1>
+                    <div class="mt-4 items-center gap-4 flex">
+                        <p class="text-2xl md:text-3xl font-extrabold text-green-500">
+                            {{product.price | currency}}
+                        </p>
+                    </div>
+
+                    <!-- Buttons and Quantity -->
+                    <div class="flex flex-wrap gap-4 mt-6 items-stretch">
+                        <button
+                            (click)="updateCart()"
+                            [disabled]="quantity==quantityInCart"
+                            mat-flat-button
+                            class="flex items-center gap-2  py-2 rounded shadow-md h-full text-gray-500 ">
+                            <mat-icon class="size-10 flex items-center justify-center">shopping_cart</mat-icon>
+                            {{getButtonText()}}
+                        </button>
+
+                        <mat-form-field
+                            appearance="outline"
+                            class="w-full sm:w-auto flex-1">
+                            <mat-label class="text-gray-200">Quantity</mat-label>
+                            <input matInput min="0" type="number" class="w-full text-gray-200" [(ngModel)]="quantity">
+                        </mat-form-field>
+                    </div>
+
+                    @if(quantity>0){
+                    <p  class="text-gray-200">
+                      There are <span class="font-bold text-orange-500">{{quantityInCart}}</span> of
+                      <span class="font-semibold">{{product.name}}</span> waiting for you in your cart.
+                    </p>
+                  }
+
+                    <mat-divider class="my-6"></mat-divider>
+                    <p class="mt-6 text-gray-300">
+                        {{product.description}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+ @else{
+  <div class="flex justify-center items-center h-[70vh]">
+    <mat-progress-spinner mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+
+ }

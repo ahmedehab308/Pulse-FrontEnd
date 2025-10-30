@@ -1,0 +1,48 @@
+<div class="rounded-lg border border-gray-800 p-4 shadow-sm mb-4">
+    <div class="flex items-center justify-between gap-6">
+        <!-- Product Image -->
+        <a routerLink="/shop/{{item().productId}}" class="shrink-0">
+            <img class="h-20 w-20 rounded-lg border-2 border-gray-800 object-cover"
+                 src="{{item().pictureUrl}}"
+                 alt="product image">
+        </a>
+
+        <!-- Product Name -->
+        <div class="flex-1 min-w-0">
+            <a routerLink="/shop/{{item().productId}}"
+               class="font-medium text-lg hover:text-gray-300 transition-colors">
+                {{item().productName}}
+            </a>
+        </div>
+
+        <!-- Quantity Controls -->
+        <div class="flex items-center gap-2 bg-gray-900 rounded-lg px-2 py-1 shrink-0">
+            <button mat-icon-button class="cursor-pointer !w-8 !h-8" (click)="minus()">
+                <mat-icon class="text-red-500 !text-xl">remove</mat-icon>
+            </button>
+
+            <span class="font-semibold text-lg min-w-[2rem] text-center">
+                {{item().quantity}}
+            </span>
+
+            <button mat-icon-button class="cursor-pointer !w-8 !h-8" (click)="plus()">
+                <mat-icon class="text-green-500 !text-xl">add</mat-icon>
+            </button>
+        </div>
+
+        <!-- Price -->
+        <div class="shrink-0 min-w-[6rem] text-right">
+            <p class="font-bold text-xl text-gray-200">
+                {{item().price | currency}}
+            </p>
+        </div>
+
+        <!-- Delete Button -->
+        <button mat-button
+                class="text-red-500 flex gap-1 items-center cursor-pointer !px-3 !py-1 shrink-0"
+                (click)="removeItem()">
+            <mat-icon class="!text-xl">delete</mat-icon>
+            <span class="text-sm">Delete</span>
+        </button>
+    </div>
+</div>

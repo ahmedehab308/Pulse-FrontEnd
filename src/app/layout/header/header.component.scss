@@ -1,0 +1,43 @@
+/* app-header.component.scss */
+
+/* لو بتستخدم Tailwind، الاستايلات هنا بسيطة */
+:host {
+  display: block;
+}
+
+/* صغيرات لتحسين الارتفاع والانتقال */
+header img {
+  display: block;
+}
+
+/* لو عايز تأثير hover خفيف */
+a:hover {
+  text-decoration: none;
+}
+
+/* responsive tweaks */
+@media (max-width: 640px) {
+  nav {
+    display: none; /* تخفي النيفيجايشن في الموبايل — أو تعمل mobile menu */
+  }
+  .ml-auto {
+    gap: .375rem;
+  }
+}
+
+a{
+  &.active{
+    color: #fba007;
+    font-weight: 700;
+  }
+}
+
+
+.gradient-bg {
+  background: linear-gradient( #101727 40% , #353d4a 100% );
+}
+
+
+.activeAct{
+  color: #fba007!important;
+}

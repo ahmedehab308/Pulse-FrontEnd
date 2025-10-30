@@ -29,5 +29,4 @@ Built with **Angular 20**, it provides a responsive, modern UI for browsing and 
 - Services handle API communication and state management
 - Communicates with **Pulse Back-end API** via RESTful endpoints
 
-   git clone <FRONTEND_REPO_URL>
-   cd client
+   
